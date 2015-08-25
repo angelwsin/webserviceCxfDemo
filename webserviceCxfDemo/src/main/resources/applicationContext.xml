@@ -36,4 +36,5 @@
    <!-- 虽然看上去是在本地有一个对象,其实真正的操作是在服务器端完成的,只是让你看去来"像"在本地执行而已.所以本地的对象只需要接口就行了,或者是一个"影子"对象 -->
     <jaxws:client id="client"  serviceClass="com.webservice.cxf.server.CxfDemo"
     address="http://localhost:8089/webserviceCxfDemo/ws/cxfDemo"/>
+    <jaxws:client id="agreen" serviceClass="com.test.cxf.ServiceSoap" address="http://interface.alahb.com/webservice/Service.asmx?WSDL"/>
 </beans>

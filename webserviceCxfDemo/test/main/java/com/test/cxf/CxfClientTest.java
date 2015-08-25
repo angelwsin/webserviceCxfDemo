@@ -13,10 +13,14 @@ import com.webservice.cxf.server.CxfDemo;
 public class CxfClientTest {
 	   @Autowired
 	   private CxfDemo cxfDemo;
+	   @Autowired
+	   private ServiceSoap serviceSoap;
 	
 	@Test
 	  public void test(){
 		System.out.println(cxfDemo.sayHello("美女"));
+		
+		System.out.println(serviceSoap.memberQuickRegister("a", "99228"));
 	  }
 
 }
