@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xmlns:aop="http://www.springframework.org/schema/aop"
+             xmlns:tx="http://www.springframework.org/schema/tx"
+             xmlns:jaxws="http://cxf.apache.org/jaxws"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+                     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                     http://www.springframework.org/schema/context
+                     http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                     http://www.springframework.org/schema/aop
+                     http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+                     http://www.springframework.org/schema/tx
+                     http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+                     http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd ">
+     <import resource="classpath*:META-INF/cxf/cxf.xml" />  
+    <import resource="classpath*:META-INF/cxf/cxf-extension-soap.xml" />  
+    <import resource="classpath*:META-INF/cxf/cxf-servlet.xml" /> 
+    <!-- server -->
+     <jaxws:endpoint id="cxfDemo" implementor="com.webservice.cxf.server.CxfDemoImpl" address="/cxfDemo"/>
+     
+    <!-- client -->
+    <!--
+
+    <bean id="client" class="com.flyfox.service.HelloWorld"
+
+       factory-bean="clientFactory" factory-method="create" />
+    <bean id="clientFactory"
+       class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+       <property name="serviceClass" value="com.flyfox.service.HelloWorld" />
+       <property name="address"
+           value="http://localhost:8080/CXFAndSpring/services/HelloWorld" />
+    </bean>
+    -->
+   <!-- 虽然看上去是在本地有一个对象,其实真正的操作是在服务器端完成的,只是让你看去来"像"在本地执行而已.所以本地的对象只需要接口就行了,或者是一个"影子"对象 -->
+    <jaxws:client id="client"  serviceClass="com.webservice.cxf.server.CxfDemo"
+    address="http://localhost:8089/webserviceCxfDemo/ws/cxfDemo"/>
+</beans>
